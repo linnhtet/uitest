@@ -9,6 +9,9 @@
     }}</span>
 </div>
 <div class="mail-list">
+    <pagination-controls
+       (pageChange)="pageChangeEvent($event)">
+    </pagination-controls>
     <mail-list-item
         matRipple
         *ngFor="let mail of mails | paginate:this.config"
