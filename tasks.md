@@ -42,28 +42,27 @@
  2.  Add pagination control at the top of the mail list.
  [Pagination added](https://github.com/linnhtet/uitest/commit/9431fda7ccb1e4f2105b4d7e2b82277ab4da1fb9#diff-2d7001fc79ffc9e882444edb9448739ecfdfeeb35c481eb36ebb874b523b448b)
 #### Backend Updates
-1.  New Database Layer to separate DB activities from Controller and Service Layer
+1.  New Database Layer to separate DB activities from Controller and Service Layer,To avoid hardcoded SQL and run query at db level, Created Store procedures 
      - [New DB Layer](https://github.com/linnhtet/apitest/tree/main/Repositories)
-      To avoid hardcoded SQL and run query at db level, Created Store procedures 
       - [Stored Procedure Scripts](https://github.com/linnhtet/apitest/tree/main/StoredProcedures)
       - [Stored Procedure Usage](https://github.com/linnhtet/apitest/blob/main/Repositories/MailRepository.cs#L101)
       - [Service layer update for stored procedure](https://github.com/linnhtet/apitest/blob/main/Services/MailService.cs#L181)
 2. Extract token related codes form UserService class to HelperClass
-- [TokenHelper](https://github.com/linnhtet/apitest/blob/main/Helpers/TokenHelper.cs)
-- [Adding new claims](https://github.com/linnhtet/apitest/blob/main/Helpers/TokenHelper.cs#L70)
-- [New custom claim types](https://github.com/linnhtet/apitest/blob/main/Helpers/CustomClaimTypes.cs#L9)
+    - [TokenHelper](https://github.com/linnhtet/apitest/blob/main/Helpers/TokenHelper.cs)
+    - [Adding new claims](https://github.com/linnhtet/apitest/blob/main/Helpers/TokenHelper.cs#L70)
+    - [New custom claim types](https://github.com/linnhtet/apitest/blob/main/Helpers/CustomClaimTypes.cs#L9)
 3. To use token info without calling token reading function again and again and to get more info from token
-- [New way of token info retrieving](https://github.com/linnhtet/apitest/blob/main/Controllers/V1/BaseController.cs#L23)
-- [New way of token info usage](https://github.com/linnhtet/apitest/blob/main/Controllers/V1/MailsController.cs#L120)
+    - [New way of token info retrieving](https://github.com/linnhtet/apitest/blob/main/Controllers/V1/BaseController.cs#L23)
+    - [New way of token info usage](https://github.com/linnhtet/apitest/blob/main/Controllers/V1/MailsController.cs#L120)
 4. New functions to achieve db entry and save changes for every repo
-- [BaseRepository](https://github.com/linnhtet/apitest/blob/main/Repositories/Abstract/BaseRepository.cs)
-- [Implementation of Base Repository functions](https://github.com/linnhtet/apitest/blob/main/Repositories/MailRepository.cs#L119)
-- [Base Repository Method usage](https://github.com/linnhtet/apitest/blob/main/Services/MailService.cs#L102)
+    - [BaseRepository](https://github.com/linnhtet/apitest/blob/main/Repositories/Abstract/BaseRepository.cs)
+    - [Implementation of Base Repository functions](https://github.com/linnhtet/apitest/blob/main/Repositories/MailRepository.cs#L119)
+    - [Base Repository Method usage](https://github.com/linnhtet/apitest/blob/main/Services/MailService.cs#L102)
 5. Interfaces and Enum in separate folders
-- [Repository Interfaces](https://github.com/linnhtet/apitest/tree/main/Repositories/Interfaces)
-- [Service Interfaces](https://github.com/linnhtet/apitest/tree/main/Services/Interfaces)
-- [Enum](https://github.com/linnhtet/apitest/tree/main/Helpers/Enum)
+    - [Repository Interfaces](https://github.com/linnhtet/apitest/tree/main/Repositories/Interfaces)
+    - [Service Interfaces](https://github.com/linnhtet/apitest/tree/main/Services/Interfaces)
+    - [Enum](https://github.com/linnhtet/apitest/tree/main/Helpers/Enum)
 6. having 2 classes in a file is also make the file messy and hard to find
- - [Mail and Paged Mail Models](https://github.com/linnhtet/apitest/tree/main/Models/Messaging)
+    - [Mail and Paged Mail Models](https://github.com/linnhtet/apitest/tree/main/Models/Messaging)
  7. Api should be versioned to be easy to maintain and mange, should use asp.net versioning package and configuration and attribute later to version api automatically
--  [Versioned API and Response](https://github.com/linnhtet/apitest/tree/main/Controllers/V1)
+    -  [Versioned API and Response](https://github.com/linnhtet/apitest/tree/main/Controllers/V1)
